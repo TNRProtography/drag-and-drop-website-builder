@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name website-builder-editor"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
