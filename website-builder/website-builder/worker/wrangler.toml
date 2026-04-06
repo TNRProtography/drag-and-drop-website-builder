@@ -1,0 +1,55 @@
+name = "website-builder"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ── Account ──────────────────────────────────────────────────
+account_id = "4d71ca02a65fe3fe95081fcc37a70e2a"
+
+# ── Workers configuration ─────────────────────────────────────
+[build]
+command = "npm run build"
+
+# ── D1 Database ───────────────────────────────────────────────
+[[d1_databases]]
+binding  = "DB"
+database_name = "website-builder-db"
+database_id   = "743ab514-0f5c-4f7a-a661-b7db86fec085"
+
+# ── KV Namespace ──────────────────────────────────────────────
+[[kv_namespaces]]
+binding = "CACHE"
+id      = "7b0337b19df14b0686fafae709a2d3f8"
+
+# ── R2 Bucket ─────────────────────────────────────────────────
+[[r2_buckets]]
+binding     = "ASSETS"
+bucket_name = "website-builder-assets"
+
+# ── Environment variables ─────────────────────────────────────
+[vars]
+ENVIRONMENT = "production"
+
+# ── Routes ────────────────────────────────────────────────────
+# Uncomment and set your domain:
+# [[routes]]
+# pattern = "builder.yourdomain.com/*"
+# zone_name = "yourdomain.com"
+
+# ── Preview / dev environment ─────────────────────────────────
+[env.preview]
+name = "website-builder-preview"
+vars = { ENVIRONMENT = "preview" }
+
+[[env.preview.d1_databases]]
+binding      = "DB"
+database_name = "website-builder-db"
+database_id   = "743ab514-0f5c-4f7a-a661-b7db86fec085"
+
+[[env.preview.kv_namespaces]]
+binding = "CACHE"
+id      = "7b0337b19df14b0686fafae709a2d3f8"
+
+[[env.preview.r2_buckets]]
+binding     = "ASSETS"
+bucket_name = "website-builder-assets"
